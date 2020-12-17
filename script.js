@@ -32,6 +32,8 @@ if (parseInt(currentHour) === parseInt(timeOfDay[i])) {
     textArea.addClass("future");
 }
 textArea.attr("id", timeOfDay[i]);
+var hourPlans = localStorage.getItem(timeOfDay[i]);
+textArea.text(hourPlans);
 timeRow.append(textArea);
 
 var saveButton = $("<button>");
@@ -50,7 +52,6 @@ $(document).on("click", function(event) {
     var buttonData = $(event.target).attr("data-r");
     console.log($("#" + buttonData).val());
     var plans = $("#" + buttonData).val();
+    localStorage.setItem(buttonData, plans)
     }
-    
-    localStorage.setItem($())
 })

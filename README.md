@@ -1,1 +1,2 @@
-# dynamic-day-planner
+# A Dynamic Day Planner
+
