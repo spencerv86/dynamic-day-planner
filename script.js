@@ -1,10 +1,12 @@
-// var thisDate = $("#currentDay");
+var thisDate = $("#current-date");
 var plannerBox = document.getElementById("planner-box")
-// todaysDate.text(moment().format("dddd, MMMM, Do YYYY"));
+thisDate.text(moment().format("dddd, MMMM, Do YYYY"));
+var currentHour = moment().format('H');
+console.log(currentHour);
 
 
 
-var timeOfDay = ["9", "10", "11", "12", "13", "14", "15", "16", "17"]
+var timeOfDay = ["9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"];  
 
 
 for (var i = 0; i < timeOfDay.length; i++) {
@@ -13,16 +15,41 @@ timeRow.addClass("row time-block");
 
 var thisHour = $("<div>");
 thisHour.addClass("hour col-1");
+thisHour.text(timeOfDay[i]);
 timeRow.append(thisHour);
 
 var textArea = $("<textarea>");
-textArea.addClass("past description col-10");
+textArea.addClass("description col-10");
+if (parseInt(currentHour) === parseInt(timeOfDay[i])) {
+    textArea.addClass("present")
+} else if (parseInt(currentHour) > parseInt(timeOfDay[i])) {
+    textArea.addClass("past")
+} else if (parseInt(currentHour) < parseInt(timeOfDay[i])) {
+    textArea.addClass("future")
+}
+textArea.attr("id", timeOfDay[i]);
 timeRow.append(textArea);
 
 var saveButton = $("<button>");
 saveButton.addClass("saveBtn col-1");
+saveButton.attr("data-r", timeOfDay[i])
+saveButton.text("Save Here");
 timeRow.append(saveButton);
+// var currentIndex = i;
+// saveButton.on("click", function() {
+//     console.log(currentIndex);
+// })
 
-$(".container").append(timeRow);
-
+$(plannerBox).append(timeRow);
 }
+
+$(document).on("click", function(event) {
+    if ($(event.target).attr("class") === "saveBtn col-1"){
+    var buttonData = $(event.target).attr("data-r");
+    console.log($("#" + buttonData).val())
+
+    //$("#" + buttonData)
+    //$("#11").val()
+    }
+
+})
