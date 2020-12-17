@@ -14,18 +14,22 @@ var timeRow = $("<div>");
 timeRow.addClass("row time-block");
 
 var thisHour = $("<div>");
-thisHour.addClass("hour col-1");
-thisHour.text(timeOfDay[i]);
+thisHour.addClass("hour col-1 time-block");
+if (parseInt(timeOfDay[i]) >= 13) {
+    thisHour.text((parseInt(timeOfDay[i]) - 12) + " pm");
+} else if (parseInt(timeOfDay[i]) <= 12) {
+    thisHour.text(parseInt(timeOfDay[i]) + " am");
+}
 timeRow.append(thisHour);
 
 var textArea = $("<textarea>");
 textArea.addClass("description col-10");
 if (parseInt(currentHour) === parseInt(timeOfDay[i])) {
-    textArea.addClass("present")
+    textArea.addClass("present");
 } else if (parseInt(currentHour) > parseInt(timeOfDay[i])) {
-    textArea.addClass("past")
+    textArea.addClass("past");
 } else if (parseInt(currentHour) < parseInt(timeOfDay[i])) {
-    textArea.addClass("future")
+    textArea.addClass("future");
 }
 textArea.attr("id", timeOfDay[i]);
 timeRow.append(textArea);
@@ -35,21 +39,18 @@ saveButton.addClass("saveBtn col-1");
 saveButton.attr("data-r", timeOfDay[i])
 saveButton.text("Save Here");
 timeRow.append(saveButton);
-// var currentIndex = i;
-// saveButton.on("click", function() {
-//     console.log(currentIndex);
-// })
 
 $(plannerBox).append(timeRow);
 }
 
+
+
 $(document).on("click", function(event) {
     if ($(event.target).attr("class") === "saveBtn col-1"){
     var buttonData = $(event.target).attr("data-r");
-    console.log($("#" + buttonData).val())
-
-    //$("#" + buttonData)
-    //$("#11").val()
+    console.log($("#" + buttonData).val());
+    var plans = $("#" + buttonData).val();
     }
-
+    
+    localStorage.setItem($())
 })
