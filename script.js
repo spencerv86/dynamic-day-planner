@@ -1,13 +1,13 @@
-var thisDate = $("#currentDay");
+// var thisDate = $("#currentDay");
 var plannerBox = document.getElementById("planner-box")
-todaysDate.text(moment().format("dddd, MMMM, Do YYYY"));
+// todaysDate.text(moment().format("dddd, MMMM, Do YYYY"));
 
 
 
 var timeOfDay = ["9", "10", "11", "12", "13", "14", "15", "16", "17"]
 
 
-// for (var i = 0; i < timeOfDay.length; i++) {
+for (var i = 0; i < timeOfDay.length; i++) {
 var timeRow = $("<div>");
 timeRow.addClass("row time-block");
 
@@ -25,4 +25,4 @@ timeRow.append(saveButton);
 
 $(".container").append(timeRow);
 
-// }
+}
