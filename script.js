@@ -6,7 +6,7 @@ console.log(currentHour);
 
 
 
-var timeOfDay = ["9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"];  
+var timeOfDay = ["9", "10", "11", "12", "13", "14", "15", "16", "17"];  
 
 
 for (var i = 0; i < timeOfDay.length; i++) {
