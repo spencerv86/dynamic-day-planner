@@ -37,9 +37,9 @@ textArea.text(hourPlans);
 timeRow.append(textArea);
 
 var saveButton = $("<button>");
-saveButton.addClass("saveBtn col-1");
+saveButton.addClass("saveBtn col-1 far fa-save");
 saveButton.attr("data-r", timeOfDay[i])
-saveButton.text("Save Here");
+// saveButton.text("Save Here");
 timeRow.append(saveButton);
 
 $(plannerBox).append(timeRow);
@@ -48,7 +48,7 @@ $(plannerBox).append(timeRow);
 
 
 $(document).on("click", function(event) {
-    if ($(event.target).attr("class") === "saveBtn col-1"){
+    if ($(event.target).attr("class") === "saveBtn col-1 far fa-save"){
     var buttonData = $(event.target).attr("data-r");
     console.log($("#" + buttonData).val());
     var plans = $("#" + buttonData).val();
